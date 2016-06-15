@@ -1,0 +1,210 @@
+@import url(https://fonts.googleapis.com/css?family=Abel|Play|Orbitron);
+/* line 1, ../components/sass/reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 22, ../components/sass/reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 26, ../components/sass/reset.scss */
+body {
+  line-height: 1; }
+
+/* line 29, ../components/sass/reset.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 32, ../components/sass/reset.scss */
+blockquote, q {
+  quotes: none; }
+
+/* line 35, ../components/sass/reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 40, ../components/sass/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 4, ../components/sass/style.scss */
+.container {
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Play', sans-serif;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 768px;
+  max-height: 1024px;
+  padding: 0;
+  margin: auto;
+  background: #000000;
+  box-shadow: border-box; }
+  /* line 16, ../components/sass/style.scss */
+  .container .top {
+    position: absolute;
+    top: -60px;
+    left: 0px;
+    z-index: 9999;
+    width: 100%;
+    -webkit-transition: top 0.5s;
+    -moz-transition: top 0.5s;
+    -o-transition: top 0.5s;
+    -ms-transition: top 0.5s;
+    transition: top 0.5s; }
+    /* line 25, ../components/sass/style.scss */
+    .container .top ul {
+      list-style: none;
+      float: left; }
+      /* line 28, ../components/sass/style.scss */
+      .container .top ul li {
+        float: left;
+        width: 40px; }
+        /* line 31, ../components/sass/style.scss */
+        .container .top ul li img {
+          width: 100%;
+          max-width: 100%;
+          padding: 0;
+          margin: 2px; }
+    /* line 39, ../components/sass/style.scss */
+    .container .top h3 {
+      display: inline;
+      float: right;
+      font-size: 30px;
+      color: #fff;
+      padding: 5px; }
+  /* line 47, ../components/sass/style.scss */
+  .container .info {
+    z-index: 9998;
+    display: none; }
+  /* line 51, ../components/sass/style.scss */
+  .container canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1; }
+  /* line 57, ../components/sass/style.scss */
+  .container .pandc {
+    position: absolute;
+    bottom: -60px;
+    left: 0px;
+    z-index: 9999;
+    background: #000360;
+    border-top: solid 1px #665ea4;
+    width: 100%;
+    -webkit-transition: bottom 0.5s;
+    -moz-transition: bottom 0.5s;
+    -o-transition: bottom 0.5s;
+    -ms-transition: bottom 0.5s;
+    transition: bottom 0.5s; }
+    /* line 68, ../components/sass/style.scss */
+    .container .pandc .left {
+      opacity: 0;
+      width: 0px;
+      height: 0px;
+      padding: 0 0 0 5px; }
+    /* line 74, ../components/sass/style.scss */
+    .container .pandc .right {
+      padding: 0 5px 0 0; }
+    /* line 77, ../components/sass/style.scss */
+    .container .pandc ul {
+      list-style: none; }
+      /* line 79, ../components/sass/style.scss */
+      .container .pandc ul li {
+        float: left; }
+        /* line 80, ../components/sass/style.scss */
+        .container .pandc ul li .current {
+          background: rgba(130, 81, 81, 0.3); }
+        /* line 84, ../components/sass/style.scss */
+        .container .pandc ul li .select {
+          width: 50px;
+          position: relative; }
+          /* line 85, ../components/sass/style.scss */
+          .container .pandc ul li .select img {
+            width: 100%;
+            margin: 1px;
+            padding: 0px; }
+          /* line 92, ../components/sass/style.scss */
+          .container .pandc ul li .select .bomb {
+            position: absolute;
+            top: 0px;
+            -webkit-transition: bottom 0.5s;
+            -moz-transition: bottom 0.5s;
+            -o-transition: bottom 0.5s;
+            -ms-transition: bottom 0.5s;
+            transition: bottom 0.5s; }
+        /* line 100, ../components/sass/style.scss */
+        .container .pandc ul li img {
+          width: 50px;
+          padding: 1px 15%; }
+        /* line 104, ../components/sass/style.scss */
+        .container .pandc ul li:last-child {
+          float: right; }
+  /* line 110, ../components/sass/style.scss */
+  .container .top.show {
+    top: 0px; }
+  /* line 113, ../components/sass/style.scss */
+  .container .pandc.show {
+    bottom: 0px; }
+  /* line 116, ../components/sass/style.scss */
+  .container .bomb.show {
+    top: -60px; }
+
+@media only screen and (max-width: 320px) {
+  /* line 121, ../components/sass/style.scss */
+  .container .pandc ul li img {
+    padding: 1px; }
+
+  /* line 122, ../components/sass/style.scss */
+  .container .top ul li {
+    width: 20px; }
+
+  /* line 123, ../components/sass/style.scss */
+  .container .top h3 {
+    font-size: 12px; } }
+@media only screen and (max-width: 375px) {
+  /* line 126, ../components/sass/style.scss */
+  .container .pandc ul li img {
+    padding: 1px 10%; }
+
+  /* line 127, ../components/sass/style.scss */
+  .container .top ul li {
+    width: 20px; }
+
+  /* line 128, ../components/sass/style.scss */
+  .container .top h3 {
+    font-size: 12px; } }
+@media only screen and (max-width: 414px) {
+  /* line 131, ../components/sass/style.scss */
+  .container .pandc ul li img {
+    padding: 1px 15%; }
+
+  /* line 132, ../components/sass/style.scss */
+  .container .top ul li {
+    width: 20px; }
+
+  /* line 133, ../components/sass/style.scss */
+  .container .top h3 {
+    font-size: 12px; } }

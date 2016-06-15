@@ -1,0 +1,134 @@
+@import 'mixins';
+@import 'reset';
+@import url(https://fonts.googleapis.com/css?family=Abel|Play|Orbitron);
+.container {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: 'Play', sans-serif;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 768px;
+    max-height: 1024px;
+    padding: 0;
+    margin: auto;
+    background: #000000;
+    box-shadow: border-box;
+    .top {
+        position: absolute;
+        top: -60px;
+        left: 0px;
+        z-index: 9999;
+        width: 100%;
+        @include prefix((
+            transition: top 0.5s
+        ), webkit moz o ms);
+        ul {
+            list-style: none;
+            float: left;
+            li {
+                float: left;
+                width: 40px;
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                    padding: 0;
+                    margin: 2px;
+                }
+            }
+        }
+        h3 {
+            display: inline;
+            float: right;
+            font-size: 30px;
+            color: #fff;
+            padding: 5px;
+        }
+    }
+    .info {
+        z-index: 9998;
+        display: none;
+    }
+    canvas {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+    }
+    .pandc {
+        position: absolute;
+        bottom: -60px;
+        left: 0px;
+        z-index: 9999;
+        background: #000360;
+        border-top: solid 1px #665ea4;
+        width: 100%;
+        @include prefix((
+            transition: bottom 0.5s
+        ), webkit moz o ms);
+        .left {
+            opacity: 0;
+            width: 0px;
+            height: 0px;
+            padding: 0 0 0 5px;
+        }
+        .right {
+            padding: 0 5px 0 0;
+        }
+        ul {
+            list-style: none;
+            li {
+                .current {
+                    background: rgba(130, 81, 81, 0.3);
+                }
+                float: left;
+                .select {
+                    img {
+                        width: 100%;
+                        margin: 1px;
+                        padding: 0px;
+                    }
+                    width: 50px;
+                    position: relative;
+                    .bomb {
+                        position: absolute;
+                        top: 0px;
+                        @include prefix((
+                            transition: bottom 0.5s
+                        ), webkit moz o ms);
+                    }
+                }
+                img {
+                    width: 50px;
+                    padding: 1px 15%;
+                }
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+    .top.show {
+        top: 0px;
+    }
+    .pandc.show {
+        bottom: 0px;
+    }
+    .bomb.show {
+        top: -60px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .container .pandc ul li img {padding: 1px;}
+    .container .top ul li {width: 20px;}
+    .container .top h3 {font-size: 12px}
+}
+@media only screen and (max-width: 375px) {
+    .container .pandc ul li img {padding: 1px 10%;}
+    .container .top ul li {width: 20px;}
+    .container .top h3 {font-size: 12px}
+}
+@media only screen and (max-width: 414px) {
+    .container .pandc ul li img {padding: 1px 15%;}
+    .container .top ul li {width: 20px;}
+    .container .top h3 {font-size: 12px}
+}
