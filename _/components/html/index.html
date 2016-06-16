@@ -4,10 +4,15 @@
 <head>
     <title>Gradius Mobile - By Jeremy Heminger</title>
     <link rel="stylesheet" href="_/css/style.css" />
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script src="_/js/script.js"></script>
     <meta name="viewport" content="width=device, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
     <div class="container">
+        <img src="_/images/star_1.png" class="star_1" />
+        <img src="_/images/star_2.png" class="star_2" />
+        <img src="_/images/star_3.png" class="star_3" />
         <div class="top">
             <ul>
                 <li><img src="_/icons/ship.png" /></li>
@@ -19,24 +24,24 @@
         <div class="info">
             <table>
                 <tr>
-                    <td>play</td>
-                    <td>instructions</td>
-                    <td>about</td>
+                    <td id="pla">play</td>
+                    <td id="ins">instructions</td>
+                    <td id="abo">about</td>
                 </tr>
             </table>
-            <div class="main">
+            <div id="main" class="show">
                 <img src="_/images/logo.png" />
                 <br />
                 <center>
-                    by jeremy heminger - 2016
+                    <p>by jeremy heminger - 2016</p>
                 </center>
             </div>
-            <div class="instructions">
+            <div id="_ins">
                 <h2>Lorem Ipsum Title Instructions</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores totam quam aspernatur sint voluptate odio omnis magnam cupiditate qui fugit voluptatibus quibusdam consequuntur optio blanditiis quas quaerat maiores nesciunt placeat.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas praesentium repellendus assumenda consectetur commodi voluptatem culpa ipsum ad ut accusantium eius dolorem officiis quae modi rerum voluptate. Provident minus!</p>
             </div>
-            <div class="about">
+            <div id="_abo">
                 <h2>Lorem Ipsum Title About</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus distinctio corporis nobis minima quos libero officiis doloribus exercitationem sequi consectetur iure voluptate minus excepturi harum reiciendis numquam dolor cum nesciunt!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut cumque deserunt accusantium ratione excepturi officia repellat dolorum ad expedita nisi necessitatibus unde eum neque voluptatem asperiores nemo explicabo minima voluptatum.</p>
@@ -70,6 +75,6 @@
         </div>
         <canvas></canvas>
     </div>
-    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="http://192.168.1.154:35729/livereload.js"></script>
 </body>
 </html> 

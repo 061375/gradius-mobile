@@ -1,8 +1,9 @@
 @import 'mixins';
+@import 'keyframes';
 @import 'reset';
 @import url(https://fonts.googleapis.com/css?family=Abel|Play|Orbitron);
 .container {
-    z-index: -2;
+    z-index: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     font-family: 'Play', sans-serif;
     position: relative;
@@ -15,6 +16,24 @@
     background: #000000;
     box-shadow: border-box;
     overflow: hidden;
+    .star_1 {
+        z-index: -1;
+        position: absolute;
+        @include prefix((
+            animation: star_1 65s infinite linear 
+        ), webkit moz o ms);
+    }
+    .star_2 {
+        z-index: -1;
+        position: absolute;
+        @include prefix((
+            animation: star_2 80s infinite linear 
+        ), webkit moz o ms);
+    }
+    .star_3 {
+        z-index: -1;
+        position: absolute;
+    }
     .top {
         position: absolute;
         top: -60px;
@@ -65,17 +84,38 @@
                 font-size: 30px;
             }
         }
-        .main {
-            color: #fff;
+        #main {
+            position: absolute;
             text-transform: uppercase;
+            opacity: 0;
+    
+            p {
+                color: #fff;
+            }
             img {
                 display: block;
                 width: 350px;
                 margin: 40% auto 0;
             }
+            @include prefix((
+                transition: opacity 0.5s ease-in
+            ), webkit moz o ms);
         }
-        .instructions {opacity: 0;width:0px;height: 0px;}
-        .about {opacity: 0;width:0px;height: 0px;}
+        #_ins,#_abo {
+            opacity: 0;
+            width:0px;
+            height: 0px;
+            margin: 40% 15px;
+            @include prefix((
+                transition: opacity 0.5s ease-in
+            ), webkit moz o ms);
+            h2,p {color: #fff;padding: 9px 0}
+            h2 {font-size: 35px}
+        }
+        #main {&.show {opacity: 1;width:auto;height: auto;position: inherit}}
+        #_ins {&.show {opacity: 1;width:auto;height: auto;}}
+        #_abo {&.show {opacity: 1;width:auto;height: auto;}}
+        
     }
     canvas {
         position: absolute;
@@ -151,13 +191,13 @@
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .pandc {bottom: -120px}
-    .container .info .main img {width: 100%;margin: 40% auto 0}
+    .container .info #main img {width: 100%;margin: 40% auto 0}
 }
 @media only screen and (max-width: 375px) {
     .container .pandc ul li img {padding: 1px 10%;}
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
-    .container .info .main img {width: 100%;margin: 40% auto 0}
+    .container .info #main img {width: 100%;margin: 40% auto 0}
     .container .pandc {bottom: -120px}
 }
 @media only screen and (max-width: 411px) {
@@ -165,18 +205,18 @@
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .pandc {bottom: -120px}
-    .container .info .main img {width: 100%;margin: 40% auto 0}
+    .container .info #main img {width: 100%;margin: 40% auto 0}
 }
 @media only screen and (min-width: 414px) {
     .container .pandc ul li img {padding: 1px 15%;}
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
-    .container .info .main img {width: 100%;margin: 40% auto 0}
+    .container .info #main img {width: 100%;margin: 40% auto 0}
 }
 @media only screen and (max-width: 435px) {
     .container .pandc ul li img {padding: 1px 15%;}
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
-    .container .info .main img {width: 100%;margin: 40% auto 0}
+    .container .info #main img {width: 100%;margin: 40% auto 0}
     .container .info table td {padding: 5px 5px 5px 4%;font-size: 20px}
 }
