@@ -199,12 +199,7 @@ table {
     .container .info #main {
       position: absolute;
       text-transform: uppercase;
-      opacity: 0;
-      -webkit-transition: opacity 0.5s ease-in;
-      -moz-transition: opacity 0.5s ease-in;
-      -o-transition: opacity 0.5s ease-in;
-      -ms-transition: opacity 0.5s ease-in;
-      transition: opacity 0.5s ease-in; }
+      opacity: 0; }
       /* line 92, ../components/sass/style.scss */
       .container .info #main p {
         color: #fff; }
@@ -213,47 +208,45 @@ table {
         display: block;
         width: 350px;
         margin: 40% auto 0; }
-    /* line 104, ../components/sass/style.scss */
+    /* line 102, ../components/sass/style.scss */
     .container .info #_ins, .container .info #_abo {
+      position: absolute;
       opacity: 0;
       width: 0px;
       height: 0px;
-      margin: 40% 15px;
-      -webkit-transition: opacity 0.5s ease-in;
-      -moz-transition: opacity 0.5s ease-in;
-      -o-transition: opacity 0.5s ease-in;
-      -ms-transition: opacity 0.5s ease-in;
-      transition: opacity 0.5s ease-in; }
-      /* line 112, ../components/sass/style.scss */
+      margin: 40% 15px; }
+      /* line 109, ../components/sass/style.scss */
       .container .info #_ins h2, .container .info #_ins p, .container .info #_abo h2, .container .info #_abo p {
         color: #fff;
         padding: 9px 0; }
-      /* line 113, ../components/sass/style.scss */
+      /* line 110, ../components/sass/style.scss */
       .container .info #_ins h2, .container .info #_abo h2 {
         font-size: 35px; }
-    /* line 115, ../components/sass/style.scss */
+    /* line 112, ../components/sass/style.scss */
     .container .info #main.show {
       opacity: 1;
       width: auto;
       height: auto;
       position: inherit; }
-    /* line 116, ../components/sass/style.scss */
+    /* line 113, ../components/sass/style.scss */
     .container .info #_ins.show {
       opacity: 1;
       width: auto;
-      height: auto; }
-    /* line 117, ../components/sass/style.scss */
+      height: auto;
+      position: inherit; }
+    /* line 114, ../components/sass/style.scss */
     .container .info #_abo.show {
       opacity: 1;
       width: auto;
-      height: auto; }
-  /* line 120, ../components/sass/style.scss */
+      height: auto;
+      position: inherit; }
+  /* line 117, ../components/sass/style.scss */
   .container canvas {
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: -1; }
-  /* line 126, ../components/sass/style.scss */
+  /* line 123, ../components/sass/style.scss */
   .container .pandc {
     position: absolute;
     bottom: -60px;
@@ -267,158 +260,159 @@ table {
     -o-transition: bottom 0.5s ease-in;
     -ms-transition: bottom 0.5s ease-in;
     transition: bottom 0.5s ease-in; }
-    /* line 137, ../components/sass/style.scss */
+    /* line 134, ../components/sass/style.scss */
     .container .pandc .left {
       opacity: 0;
       width: 0px;
       height: 0px;
       padding: 0 0 0 5px; }
-    /* line 143, ../components/sass/style.scss */
+    /* line 140, ../components/sass/style.scss */
     .container .pandc .right {
       padding: 0 5px 0 0; }
-    /* line 146, ../components/sass/style.scss */
+    /* line 143, ../components/sass/style.scss */
     .container .pandc ul {
       list-style: none; }
-      /* line 148, ../components/sass/style.scss */
+      /* line 145, ../components/sass/style.scss */
       .container .pandc ul li {
         float: left; }
-        /* line 149, ../components/sass/style.scss */
+        /* line 146, ../components/sass/style.scss */
         .container .pandc ul li .current {
           background: rgba(130, 81, 81, 0.3); }
-        /* line 153, ../components/sass/style.scss */
+        /* line 150, ../components/sass/style.scss */
         .container .pandc ul li .select {
           width: 50px;
           position: relative; }
-          /* line 154, ../components/sass/style.scss */
+          /* line 151, ../components/sass/style.scss */
           .container .pandc ul li .select img {
             width: 100%;
             margin: 1px;
             padding: 0px; }
-          /* line 161, ../components/sass/style.scss */
+          /* line 158, ../components/sass/style.scss */
           .container .pandc ul li .select .bomb {
             position: absolute;
             top: 0px;
+            opacity: 0;
             -webkit-transition: bottom 0.5s ease-in;
             -moz-transition: bottom 0.5s ease-in;
             -o-transition: bottom 0.5s ease-in;
             -ms-transition: bottom 0.5s ease-in;
             transition: bottom 0.5s ease-in; }
-        /* line 169, ../components/sass/style.scss */
+        /* line 167, ../components/sass/style.scss */
         .container .pandc ul li img {
           width: 50px;
           padding: 1px 15%; }
-        /* line 173, ../components/sass/style.scss */
+        /* line 171, ../components/sass/style.scss */
         .container .pandc ul li:last-child {
           float: right; }
-  /* line 179, ../components/sass/style.scss */
+  /* line 177, ../components/sass/style.scss */
   .container .top.show {
     top: 0px; }
-  /* line 182, ../components/sass/style.scss */
+  /* line 180, ../components/sass/style.scss */
   .container .pandc.show {
     bottom: 0px; }
-  /* line 185, ../components/sass/style.scss */
+  /* line 183, ../components/sass/style.scss */
   .container .bomb.show {
-    top: -60px; }
+    top: -60px !important; }
 
 @media only screen and (max-width: 320px) {
-  /* line 190, ../components/sass/style.scss */
+  /* line 188, ../components/sass/style.scss */
   .container .pandc ul li img {
     padding: 1px; }
 
-  /* line 191, ../components/sass/style.scss */
+  /* line 189, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 192, ../components/sass/style.scss */
+  /* line 190, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 193, ../components/sass/style.scss */
+  /* line 191, ../components/sass/style.scss */
   .container .pandc {
     bottom: -120px; }
 
-  /* line 194, ../components/sass/style.scss */
+  /* line 192, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; } }
 @media only screen and (max-width: 375px) {
-  /* line 197, ../components/sass/style.scss */
+  /* line 195, ../components/sass/style.scss */
   .container .pandc ul li img {
     padding: 1px 10%; }
 
-  /* line 198, ../components/sass/style.scss */
+  /* line 196, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 199, ../components/sass/style.scss */
+  /* line 197, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 200, ../components/sass/style.scss */
+  /* line 198, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; }
 
-  /* line 201, ../components/sass/style.scss */
+  /* line 199, ../components/sass/style.scss */
   .container .pandc {
     bottom: -120px; } }
 @media only screen and (max-width: 411px) {
-  /* line 204, ../components/sass/style.scss */
+  /* line 202, ../components/sass/style.scss */
   .container .pandc ul li img {
     padding: 1px 15%; }
 
-  /* line 205, ../components/sass/style.scss */
+  /* line 203, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 206, ../components/sass/style.scss */
+  /* line 204, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 207, ../components/sass/style.scss */
+  /* line 205, ../components/sass/style.scss */
   .container .pandc {
     bottom: -120px; }
 
-  /* line 208, ../components/sass/style.scss */
+  /* line 206, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; } }
 @media only screen and (min-width: 414px) {
-  /* line 211, ../components/sass/style.scss */
+  /* line 209, ../components/sass/style.scss */
   .container .pandc ul li img {
     padding: 1px 15%; }
 
-  /* line 212, ../components/sass/style.scss */
+  /* line 210, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 213, ../components/sass/style.scss */
+  /* line 211, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 214, ../components/sass/style.scss */
+  /* line 212, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; } }
 @media only screen and (max-width: 435px) {
-  /* line 217, ../components/sass/style.scss */
+  /* line 215, ../components/sass/style.scss */
   .container .pandc ul li img {
     padding: 1px 15%; }
 
-  /* line 218, ../components/sass/style.scss */
+  /* line 216, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 219, ../components/sass/style.scss */
+  /* line 217, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 220, ../components/sass/style.scss */
+  /* line 218, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; }
 
-  /* line 221, ../components/sass/style.scss */
+  /* line 219, ../components/sass/style.scss */
   .container .info table td {
     padding: 5px 5px 5px 4%;
     font-size: 20px; } }
