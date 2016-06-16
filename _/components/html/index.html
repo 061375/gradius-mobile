@@ -4,15 +4,12 @@
 <head>
     <title>Gradius Mobile - By Jeremy Heminger</title>
     <link rel="stylesheet" href="_/css/style.css" />
-    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script> 
     <script src="_/js/script.js"></script>
     <meta name="viewport" content="width=device, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
     <div class="container">
-        <img src="_/images/star_1.png" class="star_1" />
-        <img src="_/images/star_2.png" class="star_2" />
-        <img src="_/images/star_3.png" class="star_3" />
         <div class="top">
             <ul>
                 <li><img src="_/icons/ship.png" /></li>
@@ -79,8 +76,17 @@
                 </li>
             </ul>
         </div>
-        <canvas></canvas>
+        <!--canvas></canvas-->
+        <div id="canvas">
+        </div>
+        <img src="_/images/star_1.png" class="star_1 sfield" />
+        <img src="_/images/star_2.png" class="star_2 sfield" />
+        <img src="_/images/star_3.png" class="star_3 sfield" />
     </div>
-    <script src="http://192.168.1.154:35729/livereload.js"></script>
+    <script src="/jstesting/three.js/build/three.js"></script>
+    <script src="/jstesting/three.js/examples/js/loaders/OBJLoader.js"></script>
+    
+    <script src="http://localhost:35729/livereload.js"></script>
+    <!--script src="http://192.168.1.154:35729/livereload.js"></script-->
 </body>
 </html> 

@@ -16,23 +16,23 @@
     background: #000000;
     box-shadow: border-box;
     overflow: hidden;
-    .star_1 {
+    .sfield {
         z-index: -1;
         position: absolute;
+    }
+    .star_1 {
         @include prefix((
             animation: star_1 65s infinite linear 
         ), webkit moz o ms);
     }
     .star_2 {
-        z-index: -1;
-        position: absolute;
         @include prefix((
             animation: star_2 80s infinite linear 
         ), webkit moz o ms);
     }
     .star_3 {
-        z-index: -1;
-        position: absolute;
+        top: 0px;
+        left: 0px;
     }
     .top {
         position: absolute;
@@ -114,11 +114,12 @@
         #_abo {&.show {opacity: 1;width:auto;height: auto;position: inherit}}
         
     }
-    canvas {
+    #canvas {
         position: absolute;
         top: 0px;
         left: 0px;
         z-index: -1;
+        display: none;
     }
     .pandc {
         position: absolute;
@@ -166,7 +167,7 @@
                 }
                 img {
                     width: 50px;
-                    padding: 1px 15%;
+                    //padding: 1px 15%;
                 }
                 &:last-child {
                     float: right;
@@ -185,34 +186,34 @@
     }
 }
 @media only screen and (max-width: 320px) {
-    .container .pandc ul li img {padding: 1px;}
+    
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .pandc {bottom: -120px}
     .container .info #main img {width: 100%;margin: 40% auto 0}
 }
 @media only screen and (max-width: 375px) {
-    .container .pandc ul li img {padding: 1px 10%;}
+    
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .info #main img {width: 100%;margin: 40% auto 0}
     .container .pandc {bottom: -120px}
 }
 @media only screen and (max-width: 411px) {
-    .container .pandc ul li img {padding: 1px 15%;}
+    
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .pandc {bottom: -120px}
     .container .info #main img {width: 100%;margin: 40% auto 0}
 }
 @media only screen and (min-width: 414px) {
-    .container .pandc ul li img {padding: 1px 15%;}
+    
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .info #main img {width: 100%;margin: 40% auto 0}
 }
 @media only screen and (max-width: 435px) {
-    .container .pandc ul li img {padding: 1px 15%;}
+    
     .container .top ul li {width: 20px;}
     .container .top h3 {font-size: 12px}
     .container .info #main img {width: 100%;margin: 40% auto 0}
