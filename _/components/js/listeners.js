@@ -6,3 +6,13 @@ function onWindowResize() {
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
 }
+
+function onProgress ( xhr ) {
+        if ( xhr.lengthComputable ) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                console.log( Math.round(percentComplete, 2) + '% downloaded' );
+        }
+}
+function onError (xhr) {
+        
+}

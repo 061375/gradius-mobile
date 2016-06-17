@@ -22,13 +22,16 @@ function init() {
         scene.add( directionalLight );
         
         // init game elements
+        
+        
         // load player
         player.init(container);
         
-        
+        env.init({container:container,stars:{max:100}});
+        env.stars.init();
         //
         renderer = new THREE.WebGLRenderer();
-        renderer.setClearColor( 0xff0000 );
+        //renderer.setClearColor( 0xff0000 );
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( document.getElementsByClassName('container')[0].clientWidth,
                          document.getElementsByClassName('container')[0].clientHeight );
@@ -38,6 +41,7 @@ function init() {
         windowHalfY = container.firstChild.style.height.replace('px','') / 2;
         //
         window.addEventListener( 'resize', onWindowResize, false );
+        //console.log(scene);
 }
 
 //
@@ -46,10 +50,11 @@ function animate() {
     render();
 }
 function render() {
-    if (typeof scene.children[2] !== 'undefined' && gamerunning) {
-        var object = scene.children[2];
-        player.render(object);
+    if (gamerunning) {
+        player.render();
+        env.stars.update();
     }
+    
         //camera.position.x += ( mouseX - camera.position.x ) * .05;
         //camera.position.y += ( - mouseY - camera.position.y ) * .05;
         //camera.lookAt( scene.position );
