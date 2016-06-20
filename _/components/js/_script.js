@@ -1,10 +1,11 @@
 
 var container;
-var camera, scene, renderer;
+var camera, scene, renderer, _frustum;
 var mouseX = 0, mouseY = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 var gamerunning = false;
+var ENEMIES = {};
 window.onload = function() {
 init();
 animate();
@@ -13,6 +14,8 @@ function init() {
         container = document.getElementById("canvas");
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
         camera.position.z = 250;
+        //console.log(camera);
+        _frustum = new THREE.Frustum();
         // scene
         scene = new THREE.Scene();
         var ambient = new THREE.AmbientLight( 0xffffff );
@@ -41,7 +44,7 @@ function init() {
         windowHalfY = container.firstChild.style.height.replace('px','') / 2;
         //
         window.addEventListener( 'resize', onWindowResize, false );
-        //console.log(scene);
+        TIMELINE.init(1);
 }
 
 //
@@ -53,6 +56,7 @@ function render() {
     if (gamerunning) {
         player.render();
         env.stars.update();
+        TIMELINE.loop();
     }
     
         //camera.position.x += ( mouseX - camera.position.x ) * .05;

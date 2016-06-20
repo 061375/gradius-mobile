@@ -1,7 +1,6 @@
 var player = {
     ship:{x:0,y:-80,speed:1,b:false,object:{},cweapon:'single'},
     init: function(container) {
-        
         var manager = new THREE.LoadingManager();
         manager.onProgress = function ( item, loaded, total ) {
                 console.log( item, loaded, total );
@@ -51,7 +50,9 @@ var player = {
                 player.ship.object.add( pointLight[20] );
                 player.ship.object.position.z = -30;
                 scene.add( player.ship.object );
+                player.weapons.single.init();
         }, onProgress, onError );
+        
         container.addEventListener( 'click', this.shipClick, false );
     },
     render: function() {
@@ -113,50 +114,90 @@ var player = {
         degug:false,
         object:[],
         _single:false,
-        shotspeed:5,
-        shotclock:0,
         firing:true,
+        i:0,
         shotloop:function() {
-            if(typeof player.ship.cweapon !== 'undefined') {
-                player.weapons.shotclock++;
-                if (player.weapons.shotclock > player.weapons.shotspeed) {
-                    switch(player.ship.cweapon)
-                    {
-                        case 'single':player.weapons.single();break;
+            switch(player.ship.cweapon)
+            {
+                case 'single':
+                    player.weapons.single.update();
+                    break;
+            }
+        },
+        single: {
+            i:0,
+            clock:20,
+            max:20,
+            _single:[],
+            init: function() {
+             
+                for(var i = 0; i<this.max; i++) {
+                    var textureLoader = new THREE.TextureLoader();
+                    var map = textureLoader.load( "_/textures/shot.png" );
+                    var mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );   
+                    var sprite = new THREE.Sprite( mat );
+                    sprite.position.set(
+                                        player.ship.object.position.x,
+                                        player.ship.object.position.y+10,
+                                        -1
+                    ); 
+                    sprite.scale.x = 2;
+                    sprite.scale.y = 4;
+                    sprite.yspeed = 1;
+                    sprite.visible = false;
+                    this._single.push(sprite);
+                    scene.add(sprite);
+                }
+            },
+            shoot: function(){
+                this.i++;
+                if (this.i >= this.clock) {
+                    for(var i = 0; i<this.max; i++) {
+                        if(player.weapons.single._single[i].visible == false) {
+                            this._single[i].position.x = player.ship.object.position.x;
+                            this._single[i].position.y = player.ship.object.position.y+10;
+                            player.weapons.single._single[i].visible = true;
+                            i = this.max;
+                            this.i = 0;
+                        }
                     }
-                    player.weapons.shotclock = 0;
+                }
+            },
+            update: function() {
+                // shoot a bullet if one is needed
+                this.shoot();
+                for(var i = 0; i<this.max; i++) {
+                    // check outside
+                    if ( this._single[i].position.y > 100 ) {
+                        this._single[i].visible = false;
+                    }else{
+                        // check collision
+                        // update position
+                        if(this._single[i].visible)this._single[i].position.y += this._single[i].yspeed;
+                    }
                 }
             }
-            if(player.weapons.firing)player.weapons.update();
-        },
-        single: function() {
-            if(!this._single) {
-                var textureLoader = new THREE.TextureLoader();
-                var map = textureLoader.load( "_/textures/shot.png" );
-                this._single.mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );   
-            }
-            var sprite = new THREE.Sprite( this._single.mat );
-            sprite.position.set( 0, 0, -1 );
-            sprite.scale.x = 2;
-            sprite.scale.y = 2;
-            sprite.yspeed = 1;
-            player.weapons.object.push(sprite);
-            scene.add(sprite);
         },
         update:function(){
-            if (player.weapons.degug < 10) {
-                console.log(player.weapons.object.length);
-                player.weapons.degug ++;
-            }
-            
             var i = 0;
             var m = player.weapons.object.length;
-            for(i = 0; i<m; i++) {
-                player.weapons.object[i].position.y += player.weapons.object[i].yspeed;
-                if (player.weapons.object[i].position.y > windowHalfY) {
-                     player.weapons.object.splice(i,1); 
+            player.weapons.i++;
+            //if (player.weapons.i < 600) {
+                //console.log('m '+m);
+                //console.log(player.weapons.object[i]);
+                //console.log(windowHalfY)
+                //console.log(player.weapons.i);
+                /*
+                for(i = 0; i<m; i++) {
+                    player.weapons.object[i].position.y += player.weapons.object[i].yspeed;
+                    if (player.weapons.object[i].position.y > 10
+                        && m > 1) {
+                        console.log('remove');
+                        removeEntity(player.weapons.object[i],player.weapons.object,i); 
+                    }
                 }
-            }
+                */
+            //}
         }
     }
 }
