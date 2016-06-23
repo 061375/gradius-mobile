@@ -154,7 +154,7 @@ var player = {
                 if (this.i >= this.clock) {
                     for(var i = 0; i<this.max; i++) {
                         if(player.weapons.single._single[i].visible == false) {
-                            this._single[i].position.x = player.ship.object.position.x;
+                            this._single[i].position.x = (player.ship.object.position.x - (player.ship.object.position.x / 10));
                             this._single[i].position.y = player.ship.object.position.y+10;
                             player.weapons.single._single[i].visible = true;
                             i = this.max;
