@@ -5,7 +5,6 @@ var mouseX = 0, mouseY = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 var gamerunning = false;
-var ENEMIES = {};
 window.onload = function() {
 init();
 animate();
@@ -56,6 +55,7 @@ function render() {
     if (gamerunning) {
         player.render();
         env.stars.update();
+        ENEMIES.loop();
         TIMELINE.loop();
     }
     

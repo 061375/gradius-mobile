@@ -41,7 +41,7 @@ var player = {
             player.ship.object = object;
                 player.ship.object.traverse( function ( child ) {
                     if ( child instanceof THREE.Mesh ) {
-                            child.material.map = texture;
+                        child.material.map = texture;
                     }
                 } );
                 player.ship.object.add(sprite);
