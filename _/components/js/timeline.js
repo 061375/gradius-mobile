@@ -11,7 +11,7 @@ var TIMELINE = {
         }
     },
     level_1:function() {
-        /*
+        
         switch (this.clock) {
             case 100:
                 ENEMIES.loadmodel('turtle',function(obj){
@@ -20,6 +20,6 @@ var TIMELINE = {
                         ENEMIES.e[ENEMIES.c] = new ENEMIES.turtle(0,-30,0,obj);
                     }});
             break;
-        }*/
+        }
     }
 }

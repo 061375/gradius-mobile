@@ -44,6 +44,8 @@ var player = {
                         child.material.map = texture;
                     }
                 } );
+                player.ship.object.castShadow = true;
+                player.ship.object.receiveShadow = true;
                 player.ship.object.add(sprite);
                 player.ship.object.add( pointLight[0] );
                 player.ship.object.add( pointLight[10] );

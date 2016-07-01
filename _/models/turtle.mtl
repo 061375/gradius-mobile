@@ -1,13 +1,24 @@
-# Blender MTL File: 'turtle.blend'
-# Material Count: 1
+# Blender MTL File: 'None'
+# Material Count: 2
 
-newmtl ship
-Ns 96.078431
-Ka 1.000000 1.000000 1.000000
-Kd 0.640000 0.640000 0.640000
-Ks 0.500000 0.500000 0.500000
+newmtl Material.002
+Ns 94.117647
+Ka 0.397667 0.397667 0.397667
+Kd 0.130791 0.130791 0.130791
+Ks 0.246195 0.246195 0.246195
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd _/textures/turtle.png
+map_Kd /jstesting/shooter/_/textures/turtle.png
+
+newmtl Material.003
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.072863 0.148991 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.155744 0.318468 1.368000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /jstesting/shooter/_/textures/turtle.png
