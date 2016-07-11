@@ -11,14 +11,15 @@ var TIMELINE = {
         }
     },
     level_1:function() {
-        
         switch (this.clock) {
             case 100:
-                ENEMIES.loadmodel('turtle',function(obj){
-                    for(var i=400;i<500;i+=20) {
+   
+                ENEMIES.loadmodel('turtle3',function(obj){
+                    //for(var i=400;i<500;i+=20) {
                         ENEMIES.c++;
-                        ENEMIES.e[ENEMIES.c] = new ENEMIES.turtle(0,-30,0,obj);
-                    }});
+                        ENEMIES.e[ENEMIES.c] = new ENEMIES.turtle(-40,100,270,0,obj);
+                    //}
+                    });
             break;
         }
     }

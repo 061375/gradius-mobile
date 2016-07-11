@@ -18,7 +18,7 @@ var player = {
             sprite.scale.y = 10;
             
         var loader = new THREE.ImageLoader( manager );
-        loader.load( 'textures/UV_Grid_Sm.jpg', function ( image ) {
+        loader.load( '_/textures/viper.png', function ( image ) {
                 texture.image = image;
                 texture.needsUpdate = true;
         } ); 
@@ -98,7 +98,9 @@ var player = {
     },
     shipClick: function(event) {
         if (gamerunning) {
+            
             player.ship.x = ( event.clientX - windowHalfX ) / 2;
+
             if(player.ship.x > 0){
                 player.ship.x -= (player.ship.x / 2);
             }else{
