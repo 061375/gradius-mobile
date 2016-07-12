@@ -1,5 +1,5 @@
 var ENEMIES = {
-    e:[],
+    e:{},
     c:0,
     test:true,
     loadmodel: function(name,callback) {
@@ -22,15 +22,30 @@ var ENEMIES = {
         if(this.e.length > 0 && this.test){
             //console.log(this.e);
             //this.test = false;
-            this.e[1].loop();
+            //this.e[1].loop();
         }
-        var l = this.e.length;
-        for(i = 0; i<l; i++) {
-            
-        }
+        //if(this.e.length > 0) {
+            var l = this.e.length;
+            /*
+            for(i = 1; i<l; i++) {
+                this.e[i].loop(i);
+            }*/
+            for(var p in this.e) {
+                this.e[p].loop();
+            }
+        //}
     },
-    move_direction: function(d,s) {
-          
+    addDebugpathNodes:function(a_p) {
+        var l = a_p.length;
+        var material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+            for(var i = 0; i < l; i++) {    
+                var geometry = new THREE.BoxGeometry( 10, 10, 10 );
+                var cube = new THREE.Mesh( geometry, material );
+                cube.position.x = a_p[i].c[0];
+                cube.position.y = a_p[i].c[1];
+                scene.add( cube );
+            }
+
     },
     /**
      * @param {object} obj the enemy object
@@ -52,10 +67,17 @@ var ENEMIES = {
         //console.log(' r:'+r);
         //console.log(' d > '+d);
         //console.log(' t:'+t);
-        if (d > (r-10)){//console.log(d+' > '+r);
-        r+=t;}
-        if (d < (r+10)){//console.log(d+' < '+r);
-        r-=t;}
+        if (r >= 180 && (360 - d) > 180) {
+            if (d > (r-10)){//console.log(d+' > '+r);
+            r-=t;}
+            if (d < (r+10)){//console.log(d+' < '+r);
+            r+=t;}
+        }else{
+            if (d > (r-10)){//console.log(d+' > '+r);
+            r+=t;}
+            if (d < (r+10)){//console.log(d+' < '+r);
+            r-=t;}
+        }
     
         if (r < 0) r=360;
         if (r > 360) r=0;
@@ -82,5 +104,10 @@ var ENEMIES = {
         if (m < 0)r = -r;
         obj.rotation.y = r;
         return obj;
+    },
+    remove: function(me) {
+        var selectedObject = scene.getObjectByName(me);
+        scene.remove( selectedObject );
+        delete ENEMIES.e[me];
     }
 }
