@@ -19,7 +19,6 @@ var TIMELINE = {
                         ENEMIES.e["turtle"+ENEMIES.c] = new ENEMIES.turtle(-40,(120+i),270,0,obj,ENEMIES.c);
                     }
                 });
-                console.log(ENEMIES.e);
             break;
         }
     }

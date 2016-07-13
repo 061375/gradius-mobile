@@ -21,8 +21,10 @@ var ENEMIES = {
      * @returns {Void}
      * */
     loop: function() {
+        var i = 0;
         for(var p in this.e) {
-            this.e[p].loop();
+            this.e[p].loop(i);
+            i++;
         }
     },
     // this should be added to a general class
@@ -51,7 +53,7 @@ var ENEMIES = {
 
         // if 'variant' then set the rotation speed based on location of enemy
         if(t == 'variant') t = Math.abs(Math.abs(x) - d);
-
+        
         var r = Math.degrees(obj.rotation.z);
 
         if (r >= 180 && (360 - d) > 180) {
@@ -65,13 +67,10 @@ var ENEMIES = {
             if (d < (r+10)){
             r-=t;}
         }
-    
+        obj = this.roll(obj,r,d,t,m);
         if (r < 0) r=360;
         if (r > 360) r=0;
         obj.rotation.z = Math.radians(r);
-
-        //this.roll(obj,(t/10),m);
-        
         return obj;
     },
     /**
@@ -80,14 +79,16 @@ var ENEMIES = {
      * @param {number} m roll max ( if roll max < 0 then this roll min)
      * @returns {Object}
      * */
-    roll: function(obj,s,m) {
-        // jeremy this is psuedo code !!!
-        var r = Math.abs(obj.rotation.y); // if this is in the scope of this prototype else param
-        if (r < Math.abs(m)) {
-            r+=s;  
+    roll: function(obj,y,d,s,m) {
+        if (Math.degrees(obj.rotation.y) >= m) return obj;
+        var r = Math.abs(Math.degrees(obj.rotation.y));
+        if ((Math.abs(y) - Math.abs(d)) > 10) {
+            if (r < m)r+=s;  
+        }else{
+            if (r > 0)r-=s;
         }
-        if (m < 0)r = -r;
-        obj.rotation.y = r;
+        if (obj.rotation.y < 0)r = -r;
+        obj.rotation.y = Math.radians(r);
         return obj;
     },
     /**
