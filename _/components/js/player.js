@@ -98,9 +98,11 @@ var player = {
     },
     shipClick: function(event) {
         if (gamerunning) {
-            
-            player.ship.x = ( event.clientX - windowHalfX ) / 2;
-
+            var bd = 1.5;
+            if (windowHalfX > (500/2))bd = 2;  
+            player.ship.x = ( event.clientX - windowHalfX ) / bd;
+            //console.log(windowHalfX);
+            //console.log(event.clientX);
             if(player.ship.x > 0){
                 player.ship.x -= (player.ship.x / 2);
             }else{

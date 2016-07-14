@@ -39,9 +39,10 @@ function init() {
         renderer.setSize( document.getElementsByClassName('container')[0].clientWidth,
                          document.getElementsByClassName('container')[0].clientHeight );
         container.appendChild( renderer.domElement );
-        
-        windowHalfX = container.firstChild.style.width.replace('px','') / 2;
-        windowHalfY = container.firstChild.style.height.replace('px','') / 2;
+        //if (windowHalfX > (768 / 2)) {
+                windowHalfX = container.firstChild.style.width.replace('px','') / 2;
+                windowHalfY = container.firstChild.style.height.replace('px','') / 2;
+        //}
         //
         window.addEventListener( 'resize', onWindowResize, false );
         TIMELINE.init(1);
