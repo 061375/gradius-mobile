@@ -2,6 +2,15 @@
 @import 'keyframes';
 @import 'reset';
 @import url(https://fonts.googleapis.com/css?family=Abel|Play|Orbitron);
+#_abo {
+    a {
+        color:#fff;
+        text-decoration: none;
+    }
+    li {
+        padding: 5px 0;
+    }
+}
 .container {
     z-index: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0);

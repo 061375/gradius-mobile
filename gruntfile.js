@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                 tasks: ['compass:dev']
             },
             html: {
-                files: ['_/components/html/*.html'],
+                files: ['_/components/html/*.php'],
                 tasks: ['htmlmin']
             }
         },
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '_/components/html',
-                    src: '**/*.html',
+                    src: '**/*.php',
                     dest: ''
                 }]
             }

@@ -1,4 +1,13 @@
+/*****
+ * turtle
+ * a slow and meandering enemy
+ * this enemy will be the most common and will usually have power-ups
+ * ( if gold )
+ *
+ * @extends ENEMIES
+ * */
 ENEMIES.turtle = function(x,y,d,a_p,obj,c) {
+    if(typeof ENEMIES.turtle.obj === 'undefined')ENEMIES.turtle.obj = obj;
     
     //ENEMIES.addDebugpathNodes(this.a_p[a_p]);
     
@@ -26,14 +35,17 @@ ENEMIES.turtle = function(x,y,d,a_p,obj,c) {
     this.g.scale.z = scale;
     this.g.name = "turtle"+c; // create a referance to delete later
     
-    obj.name = "turtle"+c;
-    this.g.add(obj.clone());
+    ENEMIES.turtle.obj.name = "turtle"+c;
+    this.g.add(ENEMIES.turtle.obj.clone());
     scene.add(this.g);
 }
 
-ENEMIES.turtle.prototype = {
+ENEMIES.turtle.prototype = { 
     constructor: ENEMIES.turtle,
-    a_p:[[{t:1500,c:[-40,0]},{t:1500,c:[71,73]},{t:2550,c:[60,80]},{t:2550,c:[60,-200]}],[{t:15,c:[1,1]}]],
+    a_p:[
+         /* ap 1 */[{t:1500,c:[-40,0]},{t:1500,c:[71,73]},{t:2550,c:[60,80]},{t:2550,c:[60,-200]}],
+         /* ap 2 */[{t:1500,c:[40,0]},{t:1500,c:[-71,73]},{t:2550,c:[-60,80]},{t:2550,c:[-60,-200]}]
+    ],
     now:0,
     loop: function(i){
         this.g = ENEMIES.turn(this.g,
@@ -52,6 +64,7 @@ ENEMIES.turtle.prototype = {
                 this.die(false);
             }
         }
+        if(player.weapons.single.collision(this.g.position.x,this.g.position.y,5))this.die(false);
     },
     die: function(score){
         if (score) {
@@ -62,7 +75,7 @@ ENEMIES.turtle.prototype = {
             }
             // create explosion
             
-            // update score
+            // update score 
         }
         ENEMIES.remove("turtle"+this.c);
     }

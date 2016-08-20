@@ -1,7 +1,17 @@
+/***
+ *
+ *
+ *
+ *
+ *
+ * */
 var player = {
+    
     ship:{x:0,y:-80,speed:1,b:false,object:{},cweapon:'single'},
+    
     init: function(container) {
         var manager = new THREE.LoadingManager();
+        
         manager.onProgress = function ( item, loaded, total ) {
                 console.log( item, loaded, total );
         };
@@ -57,12 +67,28 @@ var player = {
         
         container.addEventListener( 'click', this.shipClick, false );
     },
+    /**
+     * place the ship and detect if its outside the play area
+     * @returns {Void}
+     * */
     render: function() {
+        // update any weapons
         player.weapons.shotloop();
-        var dis = distance_to_point(this.ship.object.position.x,this.ship.object.position.y,this.ship.x,this.ship.y);
+        // get the distance to the last screen click event
+        var dis = distance_to_point(
+                                    this.ship.object.position.x,
+                                    this.ship.object.position.y,
+                                    this.ship.x,
+                                    this.ship.y);
+        // set the speed of the ship relevant to the distance to the click
         var sp = this.ship.speed + (dis / 10000);
+        
+        // set the ships roll
         var sr = 0.03;
+        
+        // if the click is far enough from the ship -> move
         if (dis > 10) {
+            
             if (this.ship.object.position.x < (this.ship.x - sp)) {
                 this.ship.object.position.x += sp;
                 if(this.ship.object.rotation.y < 0.5)this.ship.object.rotation.y += sr;
@@ -72,12 +98,14 @@ var player = {
                 if(this.ship.object.rotation.y > -0.5)this.ship.object.rotation.y -= sr;
                 }
             }
+            
             if (this.ship.object.position.y < (this.ship.y - sp)) {
                 this.ship.object.position.y += sp;
             }else{
                 if(this.ship.object.position.y > (this.ship.y + sp))
                 this.ship.object.position.y -= sp;
             }
+            
             if (distance_to_point(this.ship.object.position.x,this.ship.y,this.ship.x,this.ship.y) < 25) {
         
                 if(this.ship.object.rotation.y > 0.02) {
@@ -88,6 +116,8 @@ var player = {
                 }
             }
         }else{
+            // if the ship is close enough to the click event
+            // return the ships roll to zero
             if(this.ship.object.rotation.y > 0.02) {
                 this.ship.object.rotation.y -=sr;
             }
@@ -96,19 +126,30 @@ var player = {
             }
         }
     },
+    /**
+     * where the user clicks...the ship should go
+     * this calculates the bounding box for the click event based on the screen resolution
+     * @param {Object} the click event
+     * @returns {Void}
+     * */
     shipClick: function(event) {
+        // if the game isnt running, we dont want to update this
         if (gamerunning) {
+            
             var bd = 1.5;
+            
             if (windowHalfX > (500/2))bd = 2;  
+            
             player.ship.x = ( event.clientX - windowHalfX ) / bd;
-            //console.log(windowHalfX);
-            //console.log(event.clientX);
+            
             if(player.ship.x > 0){
                 player.ship.x -= (player.ship.x / 2);
             }else{
                 player.ship.x += (Math.abs(player.ship.x) / 2);
             }
+            
             player.ship.y = -(( event.clientY - windowHalfY ) / 2);
+            
             if(player.ship.y > 0){
                 player.ship.y -= (player.ship.y / 2);
             }else{
@@ -116,12 +157,26 @@ var player = {
             }
         }
     },
+    /**
+    * single
+    * handle the weapons
+    * */
     weapons: {
-        degug:false,
+        
+        debug:false,
+        
         object:[],
+        
         _single:false,
+        
         firing:true,
+        
         i:0,
+        /**
+         * based on the currently selected weapon
+         * run its update loop
+         * @returns {Void}
+         * */
         shotloop:function() {
             switch(player.ship.cweapon)
             {
@@ -130,13 +185,17 @@ var player = {
                     break;
             }
         },
+        /**
+         * single
+         * handle the basic weapon
+         * as this is a learning process...this will serve as the basis for all other weapons and upgrades
+         * */
         single: {
             i:0,
             clock:20,
             max:20,
             _single:[],
             init: function() {
-             
                 for(var i = 0; i<this.max; i++) {
                     var textureLoader = new THREE.TextureLoader();
                     var map = textureLoader.load( "_/textures/shot.png" );
@@ -155,6 +214,10 @@ var player = {
                     scene.add(sprite);
                 }
             },
+            /**
+             * fire a bullet
+             * @returns {Void}
+             * */
             shoot: function(){
                 this.i++;
                 if (this.i >= this.clock) {
@@ -169,41 +232,57 @@ var player = {
                     }
                 }
             },
+            /**
+             * update bullet position and returns it to the ship oisition id outside the game area
+             * @returns {Void}
+             * */
             update: function() {
                 // shoot a bullet if one is needed
                 this.shoot();
                 for(var i = 0; i<this.max; i++) {
                     // check outside
                     if ( this._single[i].position.y > 100 ) {
+                        // if outside then make bullet invisible
+                        // if invisble then next loop the bullet will reset
                         this._single[i].visible = false;
                     }else{
-                        // check collision
                         // update position
                         if(this._single[i].visible)this._single[i].position.y += this._single[i].yspeed;
                     }
                 }
+            },
+            /**
+             * a method for enemies to check if they got hit by a bullet
+             * TODO: allow rectangle bounding box and maybe polygonal
+             * TODO: this MIGHT be better as a global function to player -> weapons
+             * @param {Number} other x
+             * @param {Number} other y
+             * @param {Number} the size of the bounding box
+             * @returns {Boolean}
+             * */
+            collision: function(x,y,s) {
+                for(var i = 0; i<this.max; i++) {
+                    if (checkCollisionCoords(
+                        this._single[i].position.x,
+                        this._single[i].position.y,
+                        x,
+                        y,
+                        s)){
+                        this._single[i].visible = false;
+                        return true;
+                    }
+                }
+                return false;
             }
         },
+        /**
+        * update player position 
+        * @returns {Void}
+        * */
         update:function(){
             var i = 0;
             var m = player.weapons.object.length;
             player.weapons.i++;
-            //if (player.weapons.i < 600) {
-                //console.log('m '+m);
-                //console.log(player.weapons.object[i]);
-                //console.log(windowHalfY)
-                //console.log(player.weapons.i);
-                /*
-                for(i = 0; i<m; i++) {
-                    player.weapons.object[i].position.y += player.weapons.object[i].yspeed;
-                    if (player.weapons.object[i].position.y > 10
-                        && m > 1) {
-                        console.log('remove');
-                        removeEntity(player.weapons.object[i],player.weapons.object,i); 
-                    }
-                }
-                */
-            //}
         }
     }
 }

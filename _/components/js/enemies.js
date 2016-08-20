@@ -1,3 +1,10 @@
+/**
+ *
+ *
+ *
+ *
+ *
+ * */
 var ENEMIES = {
     e:{},
     c:0,
@@ -5,7 +12,7 @@ var ENEMIES = {
     loadmodel: function(name,callback) {
         // currently this assumes that the model has only one texture
         // other sprites should be loaded seperately
-        // will add a methid to append other textures if nexxessary
+        // will add a method to append other textures if nexxessary
         var mtlLoader = new THREE.MTLLoader();
                     mtlLoader.load( '_/models/'+name+'.mtl', function( materials ) {
             materials.preload();

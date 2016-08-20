@@ -1,12 +1,22 @@
+/***
+ * this class will handle the games environment
+ * stars
+ * hills
+ * walls
+ * bases
+ * baically the level
+ * */
 var env = { 
     c:{},
+    warp:50,
     init: function(obj) {
+        
         this.c = obj.container;
         this.stars.max = (!obj.stars.max ? obj.stars.max : 100);   
     },
     stars:{
         object:{},
-        max:100,
+        max:200,
         s:[],
         init: function() {
             var textureLoader = new THREE.TextureLoader();
@@ -36,10 +46,18 @@ var env = {
             var i = 0;
             var m = env.stars.object.children.length;
             for(i = 0; i<m; i++) {
-                env.stars.object.children[i].position.y -= env.stars.object.children[i].yspeed;
+                env.stars.object.children[i].position.y -= (env.stars.object.children[i].yspeed+this.warp);
+                // lets add a "warping in" effect
+                if (this.warp > 1) {
+                    this.warp -= (this.warp / 8.6);
+                }else{
+                    this.warp = 0;
+                }
+                // if the star is outside the screen -> reset
                 if (env.stars.object.children[i].position.y < -windowHalfY) {
                     env.stars.object.children[i].position.y += (windowHalfY * 2);
-                    env.stars.object.children[i].position.x = Math.floor(Math.random() * (windowHalfX/2) - (windowHalfX / 4));
+                    env.stars.object.children[i].position.x = Math.floor(Math.random() *
+                            (windowHalfX/2) - (windowHalfX / 4));
                 }
             }
         }

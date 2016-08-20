@@ -1,3 +1,8 @@
+/**
+ *
+ * The HTML GUI
+ *
+ * */
 $(document).ready(function(){
     $('#ins').on("click",function(e){
         e.preventDefault();
