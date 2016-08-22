@@ -40,10 +40,14 @@ var windowHalfY = window.innerHeight / 2;
 
 var gamerunning = false;
 
+var gamescore = 0; 
+
 //----------------------------------
 window.onload = function() {
-        init();
-        animate();
+        Loader(function(){
+                init();
+                animate();
+        });
 }
 //----------------------------------
 /**

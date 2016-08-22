@@ -64,7 +64,7 @@ ENEMIES.turtle.prototype = {
                 this.die(false);
             }
         }
-        if(player.weapons.single.collision(this.g.position.x,this.g.position.y,5))this.die(false);
+        if(player.weapons.single.collision(this.g.position.x,this.g.position.y,5))this.die(true);
     },
     die: function(score){
         if (score) {
@@ -75,7 +75,8 @@ ENEMIES.turtle.prototype = {
             }
             // create explosion
             
-            // update score 
+            // update score
+            gamescore += ENEMIES.points.turtle;
         }
         ENEMIES.remove("turtle"+this.c);
     }

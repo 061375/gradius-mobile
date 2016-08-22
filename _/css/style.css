@@ -322,85 +322,91 @@ table {
   .container .bomb.show {
     top: -60px !important; }
 
+/* line 197, ../components/sass/style.scss */
+.github {
+  background: #fff;
+  padding: 15px 3px 1px 3px;
+  margin: 0 15px; }
+
 @media only screen and (max-width: 320px) {
-  /* line 199, ../components/sass/style.scss */
+  /* line 204, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 200, ../components/sass/style.scss */
+  /* line 205, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 201, ../components/sass/style.scss */
+  /* line 206, ../components/sass/style.scss */
   .container .pandc {
     bottom: -120px; }
 
-  /* line 202, ../components/sass/style.scss */
+  /* line 207, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; } }
 @media only screen and (max-width: 375px) {
-  /* line 206, ../components/sass/style.scss */
+  /* line 211, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 207, ../components/sass/style.scss */
+  /* line 212, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 208, ../components/sass/style.scss */
+  /* line 213, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; }
 
-  /* line 209, ../components/sass/style.scss */
+  /* line 214, ../components/sass/style.scss */
   .container .pandc {
     bottom: -120px; } }
 @media only screen and (max-width: 411px) {
-  /* line 213, ../components/sass/style.scss */
+  /* line 218, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 214, ../components/sass/style.scss */
+  /* line 219, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 215, ../components/sass/style.scss */
+  /* line 220, ../components/sass/style.scss */
   .container .pandc {
     bottom: -120px; }
 
-  /* line 216, ../components/sass/style.scss */
+  /* line 221, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; } }
 @media only screen and (min-width: 414px) {
-  /* line 220, ../components/sass/style.scss */
+  /* line 225, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 221, ../components/sass/style.scss */
+  /* line 226, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 222, ../components/sass/style.scss */
+  /* line 227, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; } }
 @media only screen and (max-width: 435px) {
-  /* line 226, ../components/sass/style.scss */
+  /* line 231, ../components/sass/style.scss */
   .container .top ul li {
     width: 20px; }
 
-  /* line 227, ../components/sass/style.scss */
+  /* line 232, ../components/sass/style.scss */
   .container .top h3 {
     font-size: 12px; }
 
-  /* line 228, ../components/sass/style.scss */
+  /* line 233, ../components/sass/style.scss */
   .container .info #main img {
     width: 100%;
     margin: 40% auto 0; }
 
-  /* line 229, ../components/sass/style.scss */
+  /* line 234, ../components/sass/style.scss */
   .container .info table td {
     padding: 5px 5px 5px 4%;
     font-size: 20px; } }

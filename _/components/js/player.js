@@ -6,10 +6,13 @@
  *
  * */
 var player = {
-    
+    map:'',
+    sprite:'',
+    texture:'',
     ship:{x:0,y:-80,speed:1,b:false,object:{},cweapon:'single'},
     
     init: function(container) {
+        /*
         var manager = new THREE.LoadingManager();
         
         manager.onProgress = function ( item, loaded, total ) {
@@ -18,21 +21,21 @@ var player = {
         var texture = new THREE.Texture();
         
         var onError = function ( xhr ) {
-        };
-        var textureLoader = new THREE.TextureLoader();
-            var map = textureLoader.load( "_/textures/thrust.png" );
-            var mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );
+        };*/
+        //var textureLoader = new THREE.TextureLoader();
+            //var map = textureLoader.load( "_/textures/thrust.png" );
+        var mat = new THREE.SpriteMaterial( { map: player.map, color: 0xffffff, fog: true } );
         var sprite = new THREE.Sprite( mat );
             sprite.position.set( 0, -10, 0 );
             sprite.scale.x = 10;
             sprite.scale.y = 10;
-            
+        /*    
         var loader = new THREE.ImageLoader( manager );
         loader.load( '_/textures/viper.png', function ( image ) {
                 texture.image = image;
                 texture.needsUpdate = true;
         } ); 
-        
+        */
         var pointLight = [];
         for(var i=0; i<30; i+=10) {
             pointLight[i] = new THREE.PointLight( 0xaac1f3, 1, i );
@@ -45,15 +48,16 @@ var player = {
         pointLight[10].position.set(30,0,-10);
         pointLight[20].position.set(-30,-30,-60);
         
-        var loader = new THREE.OBJLoader( manager );
-        loader.load( '_/models/viper.obj', function ( object ) {
+        //var loader = new THREE.OBJLoader( manager );
+        //loader.load( '_/models/viper.obj', function ( object ) {
             
-            player.ship.object = object;
+            //player.ship.object = object;
+            /*
                 player.ship.object.traverse( function ( child ) {
                     if ( child instanceof THREE.Mesh ) {
-                        child.material.map = texture;
+                        child.material.map = player.texture;
                     }
-                } );
+                } ); */
                 player.ship.object.castShadow = true;
                 player.ship.object.receiveShadow = true;
                 player.ship.object.add(sprite);
@@ -63,7 +67,7 @@ var player = {
                 player.ship.object.position.z = -30;
                 scene.add( player.ship.object );
                 player.weapons.single.init();
-        }, onProgress, onError );
+        //}, onProgress, onError );
         
         container.addEventListener( 'click', this.shipClick, false );
     },
@@ -195,12 +199,17 @@ var player = {
             clock:20,
             max:20,
             _single:[],
+            sprite:'',
+            mat:'',
             init: function() {
+                //var sprite = player.weapons.single.sprite;
                 for(var i = 0; i<this.max; i++) {
-                    var textureLoader = new THREE.TextureLoader();
-                    var map = textureLoader.load( "_/textures/shot.png" );
-                    var mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );   
-                    var sprite = new THREE.Sprite( mat );
+                    
+                    //var textureLoader = new THREE.TextureLoader();
+                    //var map = textureLoader.load( "_/textures/shot.png" );
+                    //var mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );   
+                    var sprite = new THREE.Sprite( this.mat );
+                    //var sprite = player.weapons.single.sprite;
                     sprite.position.set(
                                         player.ship.object.position.x,
                                         player.ship.object.position.y+10,

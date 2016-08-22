@@ -18,17 +18,18 @@ var env = {
         object:{},
         max:200,
         s:[],
+        mat:null,
         init: function() {
-            var textureLoader = new THREE.TextureLoader();
-            var map = textureLoader.load( "_/textures/star.png" );
-            var mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );
+            //var textureLoader = new THREE.TextureLoader();
+            //var map = textureLoader.load( "_/textures/star.png" );
+            //var mat = new THREE.SpriteMaterial( { map: map, color: 0xffffff, fog: true } );
             var i = 0;
             env.stars.object = new THREE.Group();
             while(++i<this.max) {
                 var z = -50;
                 var x = Math.floor(Math.random() * (windowHalfX/2) - (windowHalfX / 4));
                 var y = Math.floor(Math.random() * (windowHalfY/2) - (windowHalfY /5));
-                var sprite = new THREE.Sprite( mat );
+                var sprite = new THREE.Sprite( this.mat );
                     sprite.position.set( x, y, z );
                     sprite.scale.x = sprite.scale.y = Math.random() * 2 + 0.5;
                     //sprite.position.normalize();

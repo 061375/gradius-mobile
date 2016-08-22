@@ -1,20 +1,21 @@
 /**
  *
- *
- *
- *
- *
+ * 
  * */
 var ENEMIES = {
     e:{},
     c:0,
+    points: {
+        turtle:10,
+        demon:20
+    },
     test:true,
     loadmodel: function(name,callback) {
         // currently this assumes that the model has only one texture
         // other sprites should be loaded seperately
         // will add a method to append other textures if nexxessary
         var mtlLoader = new THREE.MTLLoader();
-                    mtlLoader.load( '_/models/'+name+'.mtl', function( materials ) {
+            mtlLoader.load( '_/models/'+name+'.mtl', function( materials ) {
             materials.preload();
             
             var loader = new THREE.OBJLoader();
@@ -33,6 +34,7 @@ var ENEMIES = {
             this.e[p].loop(i);
             i++;
         }
+        $('.top.show h3').html(gamescore);
     },
     // this should be added to a general class
     addDebugpathNodes:function(a_p) {
