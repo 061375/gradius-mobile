@@ -6,6 +6,7 @@
  *
  * */
 var player = {
+    mat:'',
     map:'',
     sprite:'',
     texture:'',
@@ -22,10 +23,12 @@ var player = {
         
         var onError = function ( xhr ) {
         };*/
-        //var textureLoader = new THREE.TextureLoader();
-            //var map = textureLoader.load( "_/textures/thrust.png" );
+        /*
+        var textureLoader = new THREE.TextureLoader();
+            var map = textureLoader.load( "_/textures/thrust.png" );
         var mat = new THREE.SpriteMaterial( { map: player.map, color: 0xffffff, fog: true } );
-        var sprite = new THREE.Sprite( mat );
+        */
+        var sprite = new THREE.Sprite( player.ship.mat );
             sprite.position.set( 0, -10, 0 );
             sprite.scale.x = 10;
             sprite.scale.y = 10;
@@ -45,8 +48,8 @@ var player = {
             pointLight[i].shadow.bias = 0.01;
         }
         pointLight[0].position.set(-30,0,-10);
-        pointLight[10].position.set(30,0,-10);
-        pointLight[20].position.set(-30,-30,-60);
+        //pointLight[10].position.set(30,0,-10);
+        //pointLight[20].position.set(-30,-30,-60);
         
         //var loader = new THREE.OBJLoader( manager );
         //loader.load( '_/models/viper.obj', function ( object ) {
@@ -62,8 +65,8 @@ var player = {
                 player.ship.object.receiveShadow = true;
                 player.ship.object.add(sprite);
                 player.ship.object.add( pointLight[0] );
-                player.ship.object.add( pointLight[10] );
-                player.ship.object.add( pointLight[20] );
+                //player.ship.object.add( pointLight[10] );
+                //player.ship.object.add( pointLight[20] );
                 player.ship.object.position.z = -30;
                 scene.add( player.ship.object );
                 player.weapons.single.init();

@@ -10,7 +10,7 @@ var Loader = function(_callback) {
      * 
      *
      * */
-    var _sprite = function($t,txt,obj,callback) {
+    var _texture = function($t,txt,obj,callback) {
         var textureLoader = new THREE.TextureLoader();
         var map = textureLoader.load( _textures+txt+_extension );
             obj.map = map;
@@ -34,18 +34,24 @@ var Loader = function(_callback) {
             loader.load( _models+name+'.obj', function ( object ) {
                 $t = object;
                 callback(object); 
-            }, onProgress, onError );
+            }, onProgress, onError ); 
         });
     }
     var _env = {
         stars:function(callback) {
-            _sprite(env.stars,"star",{ map: null, color: 0xffffff, fog: true },callback);
+            _texture(env.stars,"star",{ map: null, color: 0xffffff, fog: true },callback);
         }
     }
     /***
      * We will load players assets a little different
      * */
     var _player = {
+        _ship: function(callback) {
+            _loadmodel(player.ship.object,"viper",function(obj) {
+                player.ship.object = obj;
+                _texture(player.ship,"thrust",{ map: null, color: 0xffffff, fog: true },callback);
+            });    
+        },
         ship:function(callback) {
             var manager = new THREE.LoadingManager();
             
@@ -75,7 +81,7 @@ var Loader = function(_callback) {
         },
         weapons: {
             single:function(callback) {
-                _sprite(player.weapons.single,"shot",{ map: null, color: 0xffffff, fog: true },callback);
+                _texture(player.weapons.single,"shot",{ map: null, color: 0xffffff, fog: true },callback);
             }
         }
     }
@@ -87,7 +93,7 @@ var Loader = function(_callback) {
         }
     }
     _env.stars(function(){
-        _player.ship(function() {
+        _player._ship(function() {
             _player.weapons.single(function() {
                 _loadmodel(ENEMIES.turtle.obj,'turtle3',function(obj) {
                     ENEMIES.turtle.obj = obj;

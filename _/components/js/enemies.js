@@ -22,7 +22,7 @@ var ENEMIES = {
             loader.setMaterials( materials );
             loader.load( '_/models/'+name+'.obj', function ( object ) {
                 callback(object); 
-            }, onProgress, onError );
+            }, onProgress, onError ); 
         });
     },
     /**
