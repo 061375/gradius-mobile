@@ -26,4 +26,4 @@
     // it fails...
     // I don't see any calls to a <script> tag in the inspector
     // but,...it must be using something else
-    ?> <script src="_/three/build/three.min.js"></script><script src="_/three/examples/js/loaders/OBJLoader.js"></script><script src="_/three/examples/js/loaders/MTLLoader.js"></script></body></html>
+    ?> <script src="_/js/three/build/three.min.js"></script><script src="_/js/three/examples/js/loaders/OBJLoader.js"></script><script src="_/js/three/examples/js/loaders/MTLLoader.js"></script></body></html>

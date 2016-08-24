@@ -4,7 +4,6 @@
 <head>
     <title>Gradius Mobile - By Jeremy Heminger</title>
     <link rel="stylesheet" href="_/css/style.css" />
-    <!--script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script--> 
     <?php
     if(!isset($_GET['dev'])) { ?>
     <script src="_/js/script.js"></script>
@@ -151,8 +150,8 @@
     // I don't see any calls to a <script> tag in the inspector
     // but,...it must be using something else
     ?>
-    <script src="_/three/build/three.min.js"></script>
-    <script src="_/three/examples/js/loaders/OBJLoader.js"></script>
-    <script src="_/three/examples/js/loaders/MTLLoader.js"></script> 
+    <script src="_/js/three/build/three.min.js"></script>
+    <script src="_/js/three/examples/js/loaders/OBJLoader.js"></script>
+    <script src="_/js/three/examples/js/loaders/MTLLoader.js"></script> 
 </body> 
 </html>  
