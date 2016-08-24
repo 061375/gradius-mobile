@@ -10,17 +10,17 @@
     <script src="_/js/script.js"></script>
     <?php }else{ ?>
     <script>console.log('DEVELOPMENT MODE :: true');var developmentmode = true;</script>
-    <script src="_/components/js/_loader.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/_script.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/env.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/gui.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/listeners.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/math.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/player.js?v=<?=strtotime('now')?>"></script> 
-    <script src="_/components/js/scripts.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/timeline.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/enemies.js?v=<?=strtotime('now')?>"></script>
-    <script src="_/components/js/turtle.js?v=<?=strtotime('now')?>"></script>
+    <script src="_/components/js/_loader.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/_script.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/env.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/gui.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/listeners.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/math.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/player.js?v=<?php echo strtotime('now')?>"></script> 
+    <script src="_/components/js/scripts.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/timeline.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/enemies.js?v=<?php echo strtotime('now')?>"></script>
+    <script src="_/components/js/turtle.js?v=<?php echo strtotime('now')?>"></script>
     <?php } ?>
     <meta name="viewport" content="width=device, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>  
@@ -60,7 +60,7 @@
                 <p><a href="https://en.wikipedia.org/wiki/Gradius" target="_blank">https://en.wikipedia.org/wiki/Gradius</a><br />
                     </p>
                 <p>
-                    Originally a game for the NES<br />
+                    Originally a game for the NES<br /> 
                     and a side scroller...<br />
                     but I thought it would be fun to make a vertical version for a phone.
                 </p>
@@ -124,19 +124,35 @@
         <img src="_/images/star_3.png" class="star_3 sfield" /> 
     </div>
     <?php
-    $dev = array(
-    '127.0.0.1',
-    '::1'
-    );if(in_array($_SERVER['REMOTE_ADDR'], $dev))
-    if($_SERVER['REMOTE_ADDR'] == '') {
-        echo '<script src="http://192.168.1.154:35729/livereload.js"></script>';
-    }else{
-        echo '<script src="http://localhost:35729/livereload.js"></script>';
+    // make sure the server remote address is set
+    $r = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : false;
+    // if yes
+    if(false !== $r) {
+        // set a whitelist of localhost ip's
+        $dev = array(
+        '127.0.0.1',
+        '::1'
+        );
+        // if this is a localhost
+        if(in_array($r, $dev))
+        // my local IP - chnage to fit your situation
+        if($r == '192.168.1.157') {
+            echo '<script src="http://192.168.1.154:35729/livereload.js"></script>';
+        }else{
+            // this is another location
+            echo '<script src="http://localhost:35729/livereload.js"></script>';
+        }
+        // you probably wont need the previous operation unless you are working in more than one location
     }
+    // I swear three.js must have other dependancies
+    // I tried minifying into one file loading all the three files first and last
+    // I tried using only the files I needed and three in a seperate folder
+    // it fails...
+    // I don't see any calls to a <script> tag in the inspector
+    // but,...it must be using something else
     ?>
     <script src="_/three/build/three.min.js"></script>
     <script src="_/three/examples/js/loaders/OBJLoader.js"></script>
     <script src="_/three/examples/js/loaders/MTLLoader.js"></script> 
-    
 </body> 
 </html>  

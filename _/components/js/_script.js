@@ -4,7 +4,7 @@
  *
  * 
  * GRADIUS
- * By Jeremy Heminger
+ * By Jeremy Heminger 
  * 2016 - 
  * http://061375.com
  * https://github.com/061375
@@ -42,15 +42,20 @@ var gamerunning = false;
 
 var gamescore = 0; 
 
-//----------------------------------
+//---------------------------------- 
 window.onload = function() {
+            console.log($(window).width());
+    if ($(window).width() > 768) {
+        alert("this script is designed for mobile (less than 768 pixels) \n [ipads ands phones and such]...\n\nI will make it work on regular browsers in the future.\nTo view this in Google Chrome right-click and select 'Inspect' then select the mobile icon");
+    }else{
         Loader(function(){
                 init();
                 animate();
         });
+    }
 }
 //----------------------------------
-/**
+/** 
  * 
  * */
 function init() {
