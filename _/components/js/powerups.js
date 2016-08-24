@@ -15,7 +15,7 @@ var POWERUPS = {
             i++;
         }
     },
-    /**
+    /** 
      * @param {string} me the name of the enemy to kill
      * @returns {Void}
      * */

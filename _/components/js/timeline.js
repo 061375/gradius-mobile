@@ -18,7 +18,7 @@ var TIMELINE = {
         if(this.run)this.clock++;
         switch(this.level)
         {
-            case 1:this.level_1();break;
+            case 1:this.level_1();break; 
             
         }
     },

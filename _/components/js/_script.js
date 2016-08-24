@@ -77,7 +77,7 @@ function init() {
         scene.add( directionalLight );
         
         // load player
-        player.init(container);
+        player.init(container); 
         
         env.init({container:container,stars:{max:100}});
         

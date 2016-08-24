@@ -37,7 +37,7 @@ var env = {
                     //sprite.position.x = x;
                     //sprite.position.y = y;
                     //sprite.position.z = z;
-                    sprite.yspeed = (Math.random() * 2) + 0.1;
+                    sprite.yspeed = (Math.random() * 2) + 0.1; 
                 env.stars.object.add(sprite);
             }
             //console.log(env.stars.object);

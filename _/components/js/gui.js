@@ -15,7 +15,7 @@ $(document).ready(function(){
         $('#_abo').addClass("show");
     });
     $('#pla').on("click",function(e){
-        e.preventDefault();
+        e.preventDefault(); 
         $('.sfield').fadeOut("fast",function() {
             $('.info').fadeOut("fast",function(){
                 $('#canvas').fadeIn("fast",function(){

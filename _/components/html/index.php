@@ -4,7 +4,7 @@
 <head>
     <title>Gradius Mobile - By Jeremy Heminger</title>
     <link rel="stylesheet" href="_/css/style.css" />
-    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script> 
+    <!--script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script--> 
     <?php
     if(!isset($_GET['dev'])) { ?>
     <script src="_/js/script.js"></script>
@@ -117,22 +117,26 @@
                 </li> 
             </ul>
         </div>
-        <!--canvas></canvas--> 
-        <div id="canvas"> 
+        <div id="canvas">  
         </div>
         <img src="_/images/star_1.png" class="star_1 sfield" />
         <img src="_/images/star_2.png" class="star_2 sfield" />
         <img src="_/images/star_3.png" class="star_3 sfield" /> 
     </div>
-    <script src="http://192.168.1.154:81/three.js/build/three.js"></script>
-    <script src="http://192.168.1.154:81//three.js/examples/js/loaders/OBJLoader.js"></script>
-    <script src="http://192.168.1.154:81//three.js/examples/js/loaders/MTLLoader.js"></script>
-    <script src="http://192.168.1.154:35729/livereload.js"></script>
-    <!--script src="/jstesting/three.js/build/three.js"></script>
-    <script src="/jstesting/three.js/examples/js/loaders/OBJLoader.js"></script>
-    <script src="/jstesting/three.js/examples/js/loaders/MTLLoader.js"></script>
-    <script src="/jstesting/three.js/examples/js/materials/MeshPhongMaterial.js"></script>
-    <script src="http://localhost:35729/livereload.js"></script-->
+    <?php
+    $dev = array(
+    '127.0.0.1',
+    '::1'
+    );if(in_array($_SERVER['REMOTE_ADDR'], $dev))
+    if($_SERVER['REMOTE_ADDR'] == '') {
+        echo '<script src="http://192.168.1.154:35729/livereload.js"></script>';
+    }else{
+        echo '<script src="http://localhost:35729/livereload.js"></script>';
+    }
+    ?>
+    <script src="_/three/build/three.min.js"></script>
+    <script src="_/three/examples/js/loaders/OBJLoader.js"></script>
+    <script src="_/three/examples/js/loaders/MTLLoader.js"></script> 
     
 </body> 
 </html>  

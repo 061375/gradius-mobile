@@ -16,7 +16,7 @@ function toEnd(list, position) {
     list.push(list.splice(position, 1));
     return list;
 }
-/**
+/** 
  * animated textures thanks to : http://stemkoski.github.io/Three.js/
  *
  * init texture example : var texture = new THREE.ImageUtils.loadTexture( 'images/texture.png' );
